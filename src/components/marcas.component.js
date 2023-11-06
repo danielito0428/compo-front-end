@@ -36,13 +36,13 @@ componentDidMount(){
 }
 
 onChangeName(e){
-    const name = e.targer.value;
+    const name = e.target.value;
 
     this.setState(function(prevState){
         return{
             currentMarca: {
                 ...prevState.currentMarca,
-                name: name
+                nombre_marca: name
             }
         };
     });
@@ -92,7 +92,7 @@ updateMarca(){
     )
     .then(response =>{
         console.log(response.data);
-        this.state({
+        this.setState({
             msj: "Marca actualizada correctamente!"
         });
     })

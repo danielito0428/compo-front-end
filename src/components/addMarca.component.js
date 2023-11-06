@@ -15,6 +15,8 @@ export default class AddMarca extends Component{
         this.onChangeLogo = this.onChangeLogo.bind(this);
         this.onChangeNumExpediente = this.onChangeNumExpediente.bind(this);
         this.onChangeFecha = this.onChangeFecha.bind(this);
+        this.saveMarca = this.saveMarca.bind(this);
+        this.newMarca = this.newMarca.bind(this);
       
 
         this.state = {
@@ -89,7 +91,8 @@ export default class AddMarca extends Component{
             detalle: this.state.detalle,
             logo: this.state.logo
         };
-        MarcaDataService.create(data).then(response =>{
+        MarcaDataService.create(data)
+        .then(response =>{
             this.setState({
                 _id:response.data._id,
                 nombre_marca: response.data.nombre_marca,
