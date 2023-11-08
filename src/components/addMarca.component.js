@@ -25,7 +25,7 @@ export default class AddMarca extends Component{
             nombre_solicitante:"",
             clase_niza: "",
             num_expediente: "",
-            fecha_registro: '',
+            fecha_registro: "",
             detalle:"",
             logo:"",
 
@@ -117,7 +117,7 @@ export default class AddMarca extends Component{
             _id: null,
             nombre_marca: "",
             nombre_solicitante:"",
-            clase_niza: null,
+            clase_niza: "",
             num_expediente: "",
             fecha_registro: "",
             detalle:"",
