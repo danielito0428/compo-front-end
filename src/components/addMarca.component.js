@@ -15,6 +15,10 @@ export default class AddMarca extends Component{
         this.onChangeLogo = this.onChangeLogo.bind(this);
         this.onChangeNumExpediente = this.onChangeNumExpediente.bind(this);
         this.onChangeFecha = this.onChangeFecha.bind(this);
+        this.onChangeTipo_Solicitud = this.onChangeTipo_Solicitud.bind(this),
+        this.onChangeSubtipo_Solicitud = this.onChangeSubtipo_Solicitud.bind(this);
+        this.onChangeEstado = this.onChangeEstado.bind(this);
+        this.onChangeNumRegistro= this.onChangeNumRegistro.bind(this)
         this.saveMarca = this.saveMarca.bind(this);
         this.newMarca = this.newMarca.bind(this);
       
@@ -28,6 +32,10 @@ export default class AddMarca extends Component{
             fecha_registro: "",
             detalle:"",
             logo:"",
+            tipo_solicitud:"",
+            subtipo_solicitud:"",
+            estado: "",
+            num_registro:0,
 
             submitted: false
 
@@ -81,6 +89,29 @@ export default class AddMarca extends Component{
         });
     }
 
+    onChangeTipo_Solicitud(e){
+        this.setState({
+            tipo_solicitud: e.target.value
+        });
+    }
+
+    onChangeSubtipo_Solicitud(e){
+        this.setState({
+            subtipo_solicitud: e.target.value
+        });
+    }
+
+    onChangeEstado(e){
+        this.setState({
+            estado: e.target.value
+        });
+    }
+    onChangeNumRegistro(e){
+        this.setState({
+            num_registro:e.target.value
+        });
+    }
+
     saveMarca(){
         var data = {
             nombre_marca: this.state.nombre_marca,
@@ -89,7 +120,11 @@ export default class AddMarca extends Component{
             num_expediente: this.state.num_expediente,
             fecha_registro: this.state.fecha_registro,
             detalle: this.state.detalle,
-            logo: this.state.logo
+            logo: this.state.logo,
+            tipo_solicitud: this.state.tipo_solicitud,
+            subtipo_solicitud: this.state.subtipo_solicitud,
+            estado: this.state.estado,
+            num_registro: this.state.num_registro
         };
         MarcaDataService.create(data)
         .then(response =>{
@@ -102,6 +137,10 @@ export default class AddMarca extends Component{
                 fecha_registro: response.data.fecha_registro,
                 detalle: response.data.detalle,
                 logo: response.data.logo,
+                tipo_solicitud: response.data.tipo_solicitud,
+                subtipo_solicitud: response.data.subtipo_solicitud,
+                estado : response.data.estado,
+                num_registro: response.data.num_registro,
 
                 submitted:true
             });
@@ -122,6 +161,10 @@ export default class AddMarca extends Component{
             fecha_registro: "",
             detalle:"",
             logo:"",
+            tipo_solicitud: "",
+            subtipo_solicitud:"",
+            estado: "",
+            num_registro: null,
 
             submitted: false
         });
@@ -142,93 +185,54 @@ export default class AddMarca extends Component{
                     <div>
                      <div className="form-group">
                         <label htmlFor="name">Nombre de la marca</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="name"
-                        required
-                        value={this.state.nombre_marca}
-                        onChange={this.onChangeName}
-                        name="name"
-                        />
+                        <input type="text" className="form-control" id="name" required value={this.state.nombre_marca} onChange={this.onChangeName}name="name"/>
 
                      </div>
                      <div className="form-group">
                         <label htmlFor="nombre_solicitante">Nombre del solicitante</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="nombre_solicitante"
-                        required
-                        value={this.state.nombre_solicitante}
-                        onChange={this.onChangeNombreSolicitante}
-                        name="nombre_solicitante"
-                        />
+                        <input type="text" className="form-control" id="nombre_solicitante" required value={this.state.nombre_solicitante} 
+                        onChange={this.onChangeNombreSolicitante} name="nombre_solicitante" />
                         
                      </div>
                      <div className="form-group">
                         <label htmlFor="clase_niza">Clase niza</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="clase_niza"
-                        required
-                        value={this.state.clase_niza}
-                        onChange={this.onChangeClaseNiza}
-                        name="clase_niza"
-                        />
+                        <input type="text" className="form-control" id="clase_niza" required value={this.state.clase_niza} onChange={this.onChangeClaseNiza} name="clase_niza"/>
                         
                      </div>
                      <div className="form-group">
                         <label htmlFor="fecha">Fecha registro</label>
-                        <input
-                        type="date"
-                        className="form-control"
-                        id="fecha"
-                        required
-                        value={this.state.fecha_registro}
-                        onChange={this.onChangeFecha}
-                        name="fecha"
-                        />
-                        
+                        <input type="date" className="form-control" id="fecha" required value={this.state.fecha_registro} onChange={this.onChangeFecha} />    
                      </div>
-                     <div className="form-group">
+                     {/* <div className="form-group">
                         <label htmlFor="num_expediente">Numero expediente</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="num_expediente"
-                        required
-                        value={this.state.num_expediente}
-                        onChange={this.onChangeNumExpediente}
-                        name="num_expediente"
-                        />
-                        
-                     </div>
+                        <input type="text" className="form-control" id="num_expediente" required value={this.state.num_expediente} onChange={this.onChangeNumExpediente} name="num_expediente"/>  
+                     </div> */}
                      <div className="form-group">
                         <label htmlFor="detalle">Detalle</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="detalle"
+                        <input type="text"className="form-control" id="detalle" value={this.state.detalle} onChange={this.onChangeDetalle} name="detalle" />
                         
-                        value={this.state.detalle}
-                        onChange={this.onChangeDetalle}
-                        name="detalle"
-                        />
-                        
+                     </div>
+                     <div className="form-group">
+                        <label htmlFor="tipo_solicitud">Tipo de Solicitud</label>
+                        <select required value={this.state.tipo_solicitud} onChange={this.onChangeTipo_Solicitud} className="form-control" id="tipo_solicitud" name="tipo_solicitud">
+                            <option value={""}>---Tipo de Solicitud---</option>
+                            <option value={"Signo Distintivo"} >Signo Distintivo</option>
+                            <option value={"Signo no Distintivo"} >Signo no Distintivo</option>
+                        </select>
+
+                     </div>
+                     <div className="form-group">
+                        <label htmlFor="subtipo_solicitud">Sub-Tipo de Solicitud</label>
+                        <select required value={this.state.subtipo_solicitud} onChange={this.onChangeSubtipo_Solicitud} className="form-control" id="subtipo_solicitud" name="subtipo_solicitud">
+                            <option value={""}>---Subtipo de solicitud---</option>
+                            <option value={"Marca de Comercio"} >Marca de Comercio</option>
+                            <option value={"Marca de Servicio"} >Marca de Servicio</option>
+                        </select>
+
                      </div>
                      <div className="form-group">
                         <label htmlFor="logo">Logo</label>
-                        <input
-                        type="text"
-                        className="form-control"
-                        id="logo"
-                        
-                        value={this.state.logo}
-                        onChange={this.onChangeLogo}
-                        name="logo"
-                        />
+                        <input type="text" className="form-control" id="logo" value={this.state.logo} onChange={this.onChangeLogo} name="logo"/>
                      </div>
                      <button onClick={this.saveMarca} className="btn btn-success">Guardar</button>
                     </div>

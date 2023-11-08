@@ -89,16 +89,12 @@ export default class MarcasList extends Component{
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Busqeuda por nombre"
+                    placeholder="Busqueda por nombre"
                     value={searchName}
                     onChange={this.onChangeSearchName}
                   />
                   <div className="input-group-append">
-                    <button
-                      className="btn btn-outline-secondary"
-                      type="button"
-                      onClick={this.searchName}
-                    >
+                    <button className="btn btn-outline-secondary" type="button" onClick={this.searchName} >
                       Buscar
                     </button>
                   </div>
@@ -142,28 +138,36 @@ export default class MarcasList extends Component{
                     </div>
                     <div>
                       <label>
-                        <strong>Logo:</strong>
-                      </label>{" "}
-                      {currentMarca.logo}
-                    </div>
-                    <div>
-                      <label>
                         <strong>Marca:</strong>
                       </label>{" "}
                       {currentMarca.nombre_marca}
                     </div>
                     <div>
                       <label>
+                        <strong>Fecha de Presentacion:</strong>
+                      </label>{" "}
+                      {currentMarca.fecha_registro}
+                    </div>
+                    <div>
+                      <label>
+                        <strong>Numero de registro:</strong>
+                      </label>{" "}
+                      {currentMarca.num_registro}
+                    </div>
+                    <div>
+                      <label>
+                        <strong>Logo:</strong>
+                      </label>{" "}
+                      {currentMarca.logo}
+                    </div>
+                    
+                    <div>
+                      <label>
                         <strong>Numero de expediente:</strong>
                       </label>{" "}
                       {currentMarca.num_expediente}
                     </div>
-                    <div>
-                      <label>
-                        <strong>Fecha:</strong>
-                      </label>{" "}
-                      {currentMarca.fecha_registro}
-                    </div>
+                    
                     <div>
                       <label>
                         <strong>Nombre del solicitante:</strong>
@@ -176,11 +180,14 @@ export default class MarcasList extends Component{
                       </label>{" "}
                       {currentMarca.clase_niza}
                     </div>
+                    <div>
+                      <label>
+                        <strong>Estado:</strong>
+                      </label>{" "}
+                      {currentMarca.estado}
+                    </div>
       
-                    <Link
-                      to={"/marcas/" + currentMarca._id}
-                      className="badge badge-warning"
-                    >
+                    <Link to={"/marcas/" + currentMarca._id} >
                       Editar
                     </Link>
                   </div>

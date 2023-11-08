@@ -24,6 +24,9 @@ class Marcas extends Component{
             fecha_registro: "",
             detalle:"",
             logo:"",
+            tipo_solicitud:"",
+            subtipo_solicitud:"",
+            estado: "",
            },
            msj: ""
 
@@ -158,18 +161,11 @@ render() {
 
           
 
-            <button
-              className="badge badge-danger mr-2"
-              onClick={this.deleteMarca}
-            >
+            <button className="badge badge-danger mr-2" onClick={this.deleteMarca}>
               Borrar
             </button>
 
-            <button
-              type="submit"
-              className="badge badge-success"
-              onClick={this.updateMarca}
-            >
+            <button type="submit"  className="badge badge-success" onClick={this.updateMarca}>
               Actualizar
             </button>
             <p>{this.state.msj}</p>
